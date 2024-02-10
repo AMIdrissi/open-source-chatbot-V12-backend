@@ -15,7 +15,8 @@
     "elevenlabs-node": "^1.2.0",
     "express": "^4.18.2",
     "openai": "^4.11.1",
-    "play-sound": "^1.1.6"
+    "play-sound": "^1.1.6",
+    "replicate": "^0.26.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"

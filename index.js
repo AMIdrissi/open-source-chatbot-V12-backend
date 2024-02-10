@@ -92,6 +92,7 @@ app.post("/chat", async (req, res) => {
     return;
   }
 
+  // ! THIS IS WHAT NEEDS TO BE CHANGED I THINK
   const completion = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
     max_tokens: 1000,
@@ -145,4 +146,3 @@ const audioFileToBase64 = async (file) => {
 app.listen(port, () => {
   console.log(`ByteBuddy listening on port ${port}`);
 });
-
