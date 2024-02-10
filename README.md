@@ -1,4 +1,4 @@
-# All credits to [wawa sensei](https://github.com/wass08/r3f-virtual-girlfriend-frontend).
+# All credits to [wawa sensei](https://github.com/wass08/r3f-virtual-girlfriend-backend).
 
 ## Setup
 Create a `.env` file at the root of the repository to add your **OpenAI** and **ElevenLabs API Keys**. Refer to `.env.example` for the environment variable names.
