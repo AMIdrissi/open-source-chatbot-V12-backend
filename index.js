@@ -4,12 +4,13 @@ import dotenv from "dotenv";
 import voice from "elevenlabs-node";
 import express from "express";
 import { promises as fs } from "fs";
-import OpenAI from "openai";
-dotenv.config();
+import Replicate from "replicate";
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY || "-", // Your OpenAI API key here, I used "-" to avoid errors when the key is not set but you should not do that
+const replicate = new Replicate({
+  auth: process.env.REPLICATE_API_TOKEN,
 });
+
+dotenv.config();
 
 const elevenLabsApiKey = process.env.ELEVEN_LABS_API_KEY;
 // const voiceID = "kgG7dCoKCfLehAPWkJOE";
@@ -93,27 +94,17 @@ app.post("/chat", async (req, res) => {
   }
 
   // ! THIS IS WHAT NEEDS TO BE CHANGED I THINK
-  const completion = await openai.chat.completions.create({
-    model: "gpt-3.5-turbo",
-    max_tokens: 1000,
-    temperature: 0.6,
-    messages: [
-      {
-        role: "system",
-        content: `
-        You are a virtual assistant for an event called "open source days".
-        You will always reply with a JSON array of messages. With a maximum of 3 messages.
-        Each message has a text, facialExpression, and animation property.
-        The different facial expressions are: smile, sad, angry, surprised, funnyFace, and default.
-        The different animations are: Idle, Bow, WavingGesture, HandsForward and Angry. 
-        `,
-      },
-      {
-        role: "user",
-        content: userMessage || "Hello",
-      },
-    ],
-  });
+  
+const output = await replicate.run(
+  "01-ai/yi-34b-chat:914692bbe8a8e2b91a4e44203e70d170c9c5ccc1359b283c84b0ec8d47819a46",
+  {
+    input: {
+      prompt: "nice to mee you too you are gonna be part of a biiig project :D",
+    },
+  }
+);
+
+console.log(output.join(''));
   let messages = JSON.parse(completion.choices[0].message.content);
   if (messages.messages) {
     messages = messages.messages; // ChatGPT is not 100% reliable, sometimes it directly returns an array and sometimes a JSON object with a messages property
