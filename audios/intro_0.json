@@ -1,0 +1,41 @@
+{
+  "metadata": {
+    "soundFile": "C:\\Users\\Oussama\\Desktop\\r3f-virtual-girlfriend-backend-main\\audios\\intro_0.wav",
+    "duration": 4.72
+  },
+  "mouthCues": [
+    { "start": 0.00, "end": 0.26, "value": "X" },
+    { "start": 0.26, "end": 0.31, "value": "B" },
+    { "start": 0.31, "end": 0.35, "value": "C" },
+    { "start": 0.35, "end": 0.56, "value": "E" },
+    { "start": 0.56, "end": 0.63, "value": "C" },
+    { "start": 0.63, "end": 0.71, "value": "A" },
+    { "start": 0.71, "end": 0.77, "value": "F" },
+    { "start": 0.77, "end": 0.90, "value": "E" },
+    { "start": 0.90, "end": 0.97, "value": "C" },
+    { "start": 0.97, "end": 1.04, "value": "B" },
+    { "start": 1.04, "end": 1.25, "value": "F" },
+    { "start": 1.25, "end": 1.32, "value": "E" },
+    { "start": 1.32, "end": 1.40, "value": "A" },
+    { "start": 1.40, "end": 1.55, "value": "F" },
+    { "start": 1.55, "end": 1.62, "value": "B" },
+    { "start": 1.62, "end": 1.76, "value": "E" },
+    { "start": 1.76, "end": 1.90, "value": "B" },
+    { "start": 1.90, "end": 2.04, "value": "C" },
+    { "start": 2.04, "end": 2.37, "value": "B" },
+    { "start": 2.37, "end": 2.41, "value": "C" },
+    { "start": 2.41, "end": 2.48, "value": "B" },
+    { "start": 2.48, "end": 2.56, "value": "A" },
+    { "start": 2.56, "end": 2.61, "value": "C" },
+    { "start": 2.61, "end": 2.66, "value": "E" },
+    { "start": 2.66, "end": 2.74, "value": "A" },
+    { "start": 2.74, "end": 2.83, "value": "C" },
+    { "start": 2.83, "end": 2.90, "value": "B" },
+    { "start": 2.90, "end": 3.04, "value": "C" },
+    { "start": 3.04, "end": 4.02, "value": "B" },
+    { "start": 4.02, "end": 4.30, "value": "C" },
+    { "start": 4.30, "end": 4.44, "value": "A" },
+    { "start": 4.44, "end": 4.55, "value": "B" },
+    { "start": 4.55, "end": 4.72, "value": "X" }
+  ]
+}
