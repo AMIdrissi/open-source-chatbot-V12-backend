@@ -98,7 +98,7 @@ export const UI = ({ hidden, ...props }) => {
             }}
           />
           <button
-            disabled={loading/* || message*/}
+            disabled={loading|| message}
             onClick={sendMessage}
             className={`bg-amber-500 hover:bg-amber-600 text-white p-4 px-10 font-semibold uppercase rounded-md ${
               loading || message ? "cursor-not-allowed opacity-30" : ""

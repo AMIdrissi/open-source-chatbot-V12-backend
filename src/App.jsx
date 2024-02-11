@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <Loader />
-      <Leva />
+      <Leva hidden/>
       <UI />
       {/* <TextToSpeechConverter/> */}
       <Canvas shadows camera={{ position: [0, 0, 1], fov: 30 }}>
