@@ -5,9 +5,18 @@ import voice from "elevenlabs-node";
 import express from "express";
 import { promises as fs } from "fs";
 import Replicate from "replicate";
+import OpenAI from "openai";
+
+dotenv.config();
 
 const replicate = new Replicate({
   auth: process.env.REPLICATE_API_TOKEN,
+});
+
+const openai = new OpenAI({
+  baseURL: "https://openrouter.ai/api/v1",
+  apiKey: process.env.OPENROUTER_API_KEY,
+  // dangerouslyAllowBrowser: true,
 });
 
 dotenv.config();
@@ -16,6 +25,7 @@ const elevenLabsApiKey = process.env.ELEVEN_LABS_API_KEY;
 // const voiceID = "kgG7dCoKCfLehAPWkJOE";
 const voiceID = "VR6AewLTigWG4xSOukaG";
 // const voiceID = "onwK4e9ZLuTAKqWW03F9";
+// const voiceID = "bO9I2VJAR581Kmd746q1";
 
 const app = express();
 app.use(express.json());
@@ -48,7 +58,7 @@ const lipSyncMessage = async (message) => {
   );
   console.log(`Conversion done in ${new Date().getTime() - time}ms`);
   await execCommand(
-    `./bin/rhubarb -f json -o audios/message_${message}.json audios/message_${message}.wav -r phonetic`
+    `./bin/Rhubarb-Lip-Sync-1.13.0-Linux/rhubarb -f json -o audios/message_${message}.json audios/message_${message}.wav -r phonetic`
   );
   // -r phonetic is faster but less accurate
   console.log(`Lip sync done in ${new Date().getTime() - time}ms`);
@@ -56,7 +66,6 @@ const lipSyncMessage = async (message) => {
 
 app.post("/chat", async (req, res) => {
   const userMessage = req.body.message;
-  console.log(userMessage);
   if (!userMessage) {
     res.send({
       messages: [
@@ -94,34 +103,38 @@ app.post("/chat", async (req, res) => {
   }
 
   // ! THIS IS WHAT NEEDS TO BE CHANGED I THINK
-  
-const output = await replicate.run(
-  "01-ai/yi-34b-chat:914692bbe8a8e2b91a4e44203e70d170c9c5ccc1359b283c84b0ec8d47819a46",
-  {
-    input: {
-      prompt: "nice to mee you too you are gonna be part of a biiig project :D",
-    },
-  }
-);
 
-console.log(output.join(''));
-  let messages = JSON.parse(completion.choices[0].message.content);
-  if (messages.messages) {
-    messages = messages.messages; // ChatGPT is not 100% reliable, sometimes it directly returns an array and sometimes a JSON object with a messages property
-  }
-  for (let i = 0; i < messages.length; i++) {
-    const message = messages[i];
+  const completion = await openai.chat.completions.create({
+    model: "01-ai/yi-34b-chat",
+    messages: [{ role: "user", content: userMessage }],
+  });
+
+  let messagesX = completion.choices[0].message.content;
+  let messageList = [];
+  // if (messages.messages) {
+  //   messages = messages.messages; // ChatGPT is not 100% reliable, sometimes it directly returns an array and sometimes a JSON object with a messages property
+  // }
+  console.log(userMessage);
+  console.log(messagesX);
+  for (let i = 0; i < 1; i++) {
+    const message = {};
+    message.text = messagesX;
     // generate audio file
     const fileName = `audios/message_${i}.mp3`; // The name of your audio file
     const textInput = message.text; // The text you wish to convert to speech
-    await voice.textToSpeech(elevenLabsApiKey, voiceID, fileName, "textInput");
+    await voice.textToSpeech("113cdea0357ab1743ceea3d89ae34079", voiceID, fileName, textInput);
     // generate lipsync
     await lipSyncMessage(i);
+    console.log(message);
     message.audio = await audioFileToBase64(fileName);
     message.lipsync = await readJsonTranscript(`audios/message_${i}.json`);
+    message.facialExpression = "smile";
+    message.animation = "Idle";
+    messageList.push(message);
+    console.log(message);
   }
-
-  res.send({ messages });
+  
+  res.send({ messages:messageList });
 });
 
 const readJsonTranscript = async (file) => {
