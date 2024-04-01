@@ -8,7 +8,7 @@ import Replicate from "replicate";
 import OpenAI from "openai";
 
 dotenv.config();
-
+console.log("hello");
 const replicate = new Replicate({
   auth: process.env.REPLICATE_API_TOKEN,
 });
@@ -147,6 +147,6 @@ const audioFileToBase64 = async (file) => {
   return data.toString("base64");
 };
 
-app.listen(port, () => {
+app.listen(port,"0.0.0.0", () => {
   console.log(`ByteBuddy listening on port ${port}`);
 });
