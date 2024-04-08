@@ -5,18 +5,13 @@ import voice from "elevenlabs-node";
 import express from "express";
 import { promises as fs } from "fs";
 import Replicate from "replicate";
+import axios from "axios";
 import OpenAI from "openai";
 
 dotenv.config();
 console.log("hello");
 const replicate = new Replicate({
   auth: process.env.REPLICATE_API_TOKEN,
-});
-
-const openai = new OpenAI({
-  baseURL: "https://openrouter.ai/api/v1",
-  apiKey: process.env.OPENROUTER_API_KEY,
-  // dangerouslyAllowBrowser: true,
 });
 
 dotenv.config();
@@ -58,7 +53,7 @@ const lipSyncMessage = async (message) => {
   );
   console.log(`Conversion done in ${new Date().getTime() - time}ms`);
   await execCommand(
-    `./bin/Rhubarb-Lip-Sync-1.13.0-Linux/rhubarb -f json -o audios/message_${message}.json audios/message_${message}.wav -r phonetic`
+  `./bin/Rhubarb-Lip-Sync-1.13.0-Linux/rhubarb -f json -o audios/message_${message}.json audios/message_${message}.wav -r phonetic`
   );
   // -r phonetic is faster but less accurate
   console.log(`Lip sync done in ${new Date().getTime() - time}ms`);
@@ -74,42 +69,56 @@ app.post("/chat", async (req, res) => {
           audio: await audioFileToBase64("audios/intro_0.wav"),
           lipsync: await readJsonTranscript("audios/intro_0.json"),
           facialExpression: "smile",
-          animation: "Idle",
+          animation: "Salute",
         },
         {
           text: " Any questions or information you need, just ask. Enjoy the event!",
           audio: await audioFileToBase64("audios/intro_1.wav"),
           lipsync: await readJsonTranscript("audios/intro_1.json"),
           facialExpression: "smile",
-          animation: "Bow",
-        },
-      ],
-    });
-    return;
-  }
-  if (!elevenLabsApiKey || openai.apiKey === "-") {
-    res.send({
-      messages: [
-        {
-          text: "Please my dear, don't forget to add your API keys!",
-          audio: await audioFileToBase64("audios/api_0.wav"),
-          lipsync: await readJsonTranscript("audios/api_0.json"),
-          facialExpression: "angry",
           animation: "Idle",
         },
       ],
     });
     return;
   }
+  // if (!elevenLabsApiKey) {
+  //   res.send({
+  //     messages: [
+  //       {
+  //         text: "Please my dear, don't forget to add your API keys!",
+  //         audio: await audioFileToBase64("audios/api_0.wav"),
+  //         lipsync: await readJsonTranscript("audios/api_0.json"),
+  //         facialExpression: "angry",
+  //         animation: "Idle",
+  //       },
+  //     ],
+  //   });
+  //   return;
+  // }
 
   // ! THIS IS WHAT NEEDS TO BE CHANGED I THINK
-
-  const completion = await openai.chat.completions.create({
-    model: "01-ai/yi-34b-chat",
-    messages: [{ role: "user", content: userMessage }],
-  });
-
-  let messagesX = completion.choices[0].message.content;
+  console.time("Execution Time");
+  const completion = await axios.post(
+    "http://localhost:11434/api/generate",
+    {
+      model: "llama2",
+      prompt: userMessage,
+      system:
+        "You are a virtual assistant for an event called open source days,you're going to answer messages briefly",
+      stream: false,
+    },
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  // .then((resp_message) => {
+  //   resp_message.data;
+  // });
+  console.timeEnd("Execution Time");
+  let messagesX = completion.data.response;
   let messageList = [];
   // if (messages.messages) {
   //   messages = messages.messages; // ChatGPT is not 100% reliable, sometimes it directly returns an array and sometimes a JSON object with a messages property
@@ -122,7 +131,17 @@ app.post("/chat", async (req, res) => {
     // generate audio file
     const fileName = `audios/message_${i}.mp3`; // The name of your audio file
     const textInput = message.text; // The text you wish to convert to speech
-    await voice.textToSpeech("113cdea0357ab1743ceea3d89ae34079", voiceID, fileName, textInput);
+
+    await voice.textToSpeech(
+      "113cdea0357ab1743ceea3d89ae34079",
+      voiceID,
+      fileName,
+      textInput,
+      0.5,
+      0.31,
+      "eleven_turbo_v2"
+    );
+
     // generate lipsync
     await lipSyncMessage(i);
     console.log(message);
@@ -133,8 +152,8 @@ app.post("/chat", async (req, res) => {
     messageList.push(message);
     console.log(message);
   }
-  
-  res.send({ messages:messageList });
+
+  res.send({ messages: messageList });
 });
 
 const readJsonTranscript = async (file) => {
@@ -147,6 +166,6 @@ const audioFileToBase64 = async (file) => {
   return data.toString("base64");
 };
 
-app.listen(port,"0.0.0.0", () => {
+app.listen(port, "0.0.0.0", () => {
   console.log(`ByteBuddy listening on port ${port}`);
 });
