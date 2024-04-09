@@ -69,14 +69,14 @@ app.post("/chat", async (req, res) => {
           audio: await audioFileToBase64("audios/intro_0.wav"),
           lipsync: await readJsonTranscript("audios/intro_0.json"),
           facialExpression: "smile",
-          animation: "Salute",
+          animation: "Idle",
         },
         {
           text: " Any questions or information you need, just ask. Enjoy the event!",
           audio: await audioFileToBase64("audios/intro_1.wav"),
           lipsync: await readJsonTranscript("audios/intro_1.json"),
           facialExpression: "smile",
-          animation: "Idle",
+          animation: "Bow",
         },
       ],
     });
