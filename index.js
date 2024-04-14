@@ -18,7 +18,8 @@ dotenv.config();
 
 const elevenLabsApiKey = process.env.ELEVEN_LABS_API_KEY;
 // const voiceID = "kgG7dCoKCfLehAPWkJOE";
-const voiceID = "VR6AewLTigWG4xSOukaG";
+// const voiceID = "VR6AewLTigWG4xSOukaG"; // not very deep voice
+const voiceID = "HiA60FKHfjXQibqQF7jr"; // deep voice 
 // const voiceID = "onwK4e9ZLuTAKqWW03F9";
 // const voiceID = "bO9I2VJAR581Kmd746q1";
 
@@ -100,13 +101,14 @@ app.post("/chat", async (req, res) => {
   // ! THIS IS WHAT NEEDS TO BE CHANGED I THINK
   console.time("Execution Time");
   const completion = await axios.post(
-    "http://localhost:11434/api/generate",
+    "http://0.0.0.0:11434/api/generate",
     {
       model: "llama2",
       prompt: userMessage,
       system:
         "You are a virtual assistant for an event called open source days,you're going to answer messages briefly",
       stream: false,
+      keep_alive:"10m",
     },
     {
       headers: {
