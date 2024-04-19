@@ -1,0 +1,40 @@
+{
+  "metadata": {
+    "soundFile": "/home/amidrissi/Downloads/script/converted_intro/./intro1.wav",
+    "duration": 4.96
+  },
+  "mouthCues": [
+    { "start": 0.00, "end": 0.03, "value": "X" },
+    { "start": 0.03, "end": 0.11, "value": "B" },
+    { "start": 0.11, "end": 0.18, "value": "F" },
+    { "start": 0.18, "end": 0.46, "value": "C" },
+    { "start": 0.46, "end": 0.60, "value": "F" },
+    { "start": 0.60, "end": 0.81, "value": "B" },
+    { "start": 0.81, "end": 1.02, "value": "D" },
+    { "start": 1.02, "end": 1.09, "value": "B" },
+    { "start": 1.09, "end": 1.30, "value": "C" },
+    { "start": 1.30, "end": 1.37, "value": "B" },
+    { "start": 1.37, "end": 1.44, "value": "C" },
+    { "start": 1.44, "end": 1.93, "value": "B" },
+    { "start": 1.93, "end": 1.97, "value": "D" },
+    { "start": 1.97, "end": 2.11, "value": "E" },
+    { "start": 2.11, "end": 2.18, "value": "F" },
+    { "start": 2.18, "end": 2.25, "value": "H" },
+    { "start": 2.25, "end": 2.40, "value": "A" },
+    { "start": 2.40, "end": 2.83, "value": "B" },
+    { "start": 2.83, "end": 2.97, "value": "D" },
+    { "start": 2.97, "end": 3.39, "value": "B" },
+    { "start": 3.39, "end": 3.46, "value": "G" },
+    { "start": 3.46, "end": 3.53, "value": "B" },
+    { "start": 3.53, "end": 3.63, "value": "A" },
+    { "start": 3.63, "end": 3.70, "value": "B" },
+    { "start": 3.70, "end": 3.77, "value": "C" },
+    { "start": 3.77, "end": 4.12, "value": "B" },
+    { "start": 4.12, "end": 4.19, "value": "D" },
+    { "start": 4.19, "end": 4.26, "value": "G" },
+    { "start": 4.26, "end": 4.33, "value": "B" },
+    { "start": 4.33, "end": 4.54, "value": "C" },
+    { "start": 4.54, "end": 4.68, "value": "E" },
+    { "start": 4.68, "end": 4.96, "value": "X" }
+  ]
+}

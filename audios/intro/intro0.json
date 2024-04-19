@@ -1,0 +1,29 @@
+{
+  "metadata": {
+    "soundFile": "/home/amidrissi/Downloads/script/converted_intro/./intro0.wav",
+    "duration": 3.57
+  },
+  "mouthCues": [
+    { "start": 0.00, "end": 0.06, "value": "X" },
+    { "start": 0.06, "end": 0.13, "value": "B" },
+    { "start": 0.13, "end": 0.62, "value": "C" },
+    { "start": 0.62, "end": 0.76, "value": "X" },
+    { "start": 0.76, "end": 0.81, "value": "B" },
+    { "start": 0.81, "end": 0.86, "value": "D" },
+    { "start": 0.86, "end": 0.94, "value": "A" },
+    { "start": 0.94, "end": 1.05, "value": "E" },
+    { "start": 1.05, "end": 1.26, "value": "F" },
+    { "start": 1.26, "end": 1.47, "value": "B" },
+    { "start": 1.47, "end": 1.54, "value": "C" },
+    { "start": 1.54, "end": 1.61, "value": "E" },
+    { "start": 1.61, "end": 1.75, "value": "B" },
+    { "start": 1.75, "end": 1.89, "value": "D" },
+    { "start": 1.89, "end": 2.52, "value": "B" },
+    { "start": 2.52, "end": 2.66, "value": "C" },
+    { "start": 2.66, "end": 2.85, "value": "F" },
+    { "start": 2.85, "end": 2.90, "value": "E" },
+    { "start": 2.90, "end": 3.15, "value": "C" },
+    { "start": 3.15, "end": 3.36, "value": "B" },
+    { "start": 3.36, "end": 3.57, "value": "X" }
+  ]
+}
