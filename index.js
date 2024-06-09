@@ -4,19 +4,15 @@ import dotenv from "dotenv";
 import voice from "elevenlabs-node";
 import express from "express";
 import { promises as fs } from "fs";
-import Replicate from "replicate";
 import axios from "axios";
-import OpenAI from "openai";
 
 dotenv.config();
 console.log("hello");
-const replicate = new Replicate({
-  auth: process.env.REPLICATE_API_TOKEN,
-});
-
 dotenv.config();
 
+//! make sure you change these as they no longer work 
 const elevenLabsApiKey = "0db7198723df5782880fe3b741a4a832";
+
 // const voiceID = "kgG7dCoKCfLehAPWkJOE";
 // const voiceID = "VR6AewLTigWG4xSOukaG"; // not very deep voice
 // const voiceID = "fC8dY5CgRJzaqqmhetsm"; // deep voice
@@ -63,7 +59,8 @@ const lipSyncMessage = async (message) => {
 
 app.post("/chat", async (req, res) => {
   const userMessage = req.body.message;
-
+ 
+  // switch case for all the conferenciers and guests
   switch (userMessage) {
     case "":
       res.send({
@@ -347,9 +344,7 @@ app.post("/chat", async (req, res) => {
   console.timeEnd("Execution Time");
   let messagesX = completion.data.response;
   let messageList = [];
-  // if (messages.messages) {
-  //   messages = messages.messages; // ChatGPT is not 100% reliable, sometimes it directly returns an array and sometimes a JSON object with a messages property
-  // }
+  
   console.log(userMessage);
   console.log(messagesX);
   for (let i = 0; i < 1; i++) {
@@ -370,7 +365,7 @@ app.post("/chat", async (req, res) => {
     );
 
     // generate lipsync
-    // await lipSyncMessage(i);
+    await lipSyncMessage(i);
     console.log(message);
     message.audio = await audioFileToBase64(fileName);
     message.lipsync = await readJsonTranscript(`audios/message_${i}.json`);
