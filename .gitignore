@@ -1,5 +1,6 @@
 .env
 node_modules
 bin
-audios/message_*
+audios/*
 index2.js
+.yarn

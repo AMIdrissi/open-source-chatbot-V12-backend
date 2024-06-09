@@ -146,13 +146,15 @@ app.post("/chat", async (req, res) => {
         ],
       });
       return;
+    // from here
     case "3":
       res.send({
         messages: [
+          //TODO : HAS TO REGENERATE SOUND
           {
-            text: "Oussama Hamal, teacher-researcher and consultant in information technologies, Najib Hamouti, specialist in career management and governance of training establishments, Lakhdissi Mouhsine, entrepreneur specializing in startups, and Mohammed Jebbar, leader in transforming business practices through innovative solutions, will come together to debate the crucial theme: 'Can artificial intelligence replace engineers in the job market?'",
-            audio: await audioFileToBase64("audios/day1/conf2.wav"),
-            lipsync: await readJsonTranscript("audios/day1/conf2.json"),
+            text: "Mr Akram Ougri is an expert in supporting commercial management and specialist in artificial intelligence Akram will lead an engaging workshop on the theme of generative AI and no-code solutions to enhance the customer experience. Join us for a day of insightful exploration and dynamic discussions on how these innovative technologies can revolutionize user experiences.",
+            audio: await audioFileToBase64("audios/day1/conf4.wav"),
+            lipsync: await readJsonTranscript("audios/day1/conf4.json"),
             facialExpression: "smile",
             animation: "Idle",
           },
@@ -163,7 +165,14 @@ app.post("/chat", async (req, res) => {
       res.send({
         messages: [
           {
-            text: "This roundtable will be an opportunity to explore diverse perspectives and gain valuable insights into this current topic. Additionally, during this event, don't miss the workshop led by Akram Ougri, expert in supporting commercial management and specialist in artificial intelligence. Akram will share his expertise on the topics 'Can artificial intelligence replace engineers in the job market?' and 'Design Thinking and artificial intelligence for a better User Experience (UX)'. Join us for a day of enriching learning and stimulating discussions.",
+            text: "Oussama Hamal, teacher-researcher and consultant in information technologies, Najib Hamouti, specialist in career management and governance of training establishments, Lakhdissi Mouhsine, entrepreneur specializing in startups, and Mohammed Jebbar, leader in transforming business practices through innovative solutions, will come together to debate the crucial theme: 'Can artificial intelligence replace engineers in the job market?'",
+            audio: await audioFileToBase64("audios/day1/conf2.wav"),
+            lipsync: await readJsonTranscript("audios/day1/conf2.json"),
+            facialExpression: "smile",
+            animation: "Idle",
+          },
+          {
+            text: "This roundtable will be an opportunity to explore diverse perspectives and gain valuable insights into this current topic.",
             audio: await audioFileToBase64("audios/day1/conf3.wav"),
             lipsync: await readJsonTranscript("audios/day1/conf3.json"),
             facialExpression: "smile",
@@ -176,9 +185,9 @@ app.post("/chat", async (req, res) => {
       res.send({
         messages: [
           {
-            text: "Dive into an enriching exploration with Moussab Benious's conference, focused on the crucial theme: 'Keys to Success in your End-of-Studies Project'. Discover practical advice and effective strategies for successfully completing your end-of-studies project. Moussab Benious will share his expertise and offer valuable guidance to students seeking inspiration for their academic project. This conference promises to be an invaluable source of inspiration.",
-            audio: await audioFileToBase64("audios/day1/conf4.wav"),
-            lipsync: await readJsonTranscript("audios/day1/conf4.json"),
+            text: "In parallel, during this event, don't miss the workshop led by Said Wahid, Microsoft MCT consultant. With his expertise in software development and varied experience as a Microsoft training consultant, Said Wahid will shed light on two essential topics: 'How to successfully complete my end-of-studies project' and 'Building an AI Application.'",
+            audio: await audioFileToBase64("audios/day1/conf6.wav"),
+            lipsync: await readJsonTranscript("audios/day1/conf6.json"),
             facialExpression: "smile",
             animation: "Idle",
           },
@@ -189,7 +198,7 @@ app.post("/chat", async (req, res) => {
       res.send({
         messages: [
           {
-            text: "In parallel, during this event, don't miss the workshop led by Said Wahid, Microsoft MCT consultant. With his expertise in software development and varied experience as a Microsoft training consultant, Said Wahid will shed light on two essential topics: 'How to successfully complete my end-of-studies project' and 'Building an AI Application.'",
+            text: "Dive into an enriching exploration with Moussab Benious's conference, focused on the crucial theme: 'Keys to Success in your End-of-Studies Project'. Discover practical advice and effective strategies for successfully completing your end-of-studies project. Moussab Benious will share his expertise and offer valuable guidance to students seeking inspiration for their academic project. This conference promises to be an invaluable source of inspiration.",
             audio: await audioFileToBase64("audios/day1/conf5.wav"),
             lipsync: await readJsonTranscript("audios/day1/conf5.json"),
             facialExpression: "smile",
@@ -202,9 +211,9 @@ app.post("/chat", async (req, res) => {
       res.send({
         messages: [
           {
-            text: "Prepare to be inspired by two renowned experts. Hamza Aouadi, founder of TECH-57 and the digital innovation center 'Khotwa-tech' - C.I.N.K, is a pioneer in the field of digital innovation and ecosystem building. Mehdi Agouzal, founder of Mastery, excels in developing advanced solutions in geolocation and telemetry. They will share their enriching experiences with us, offering a unique insight into their career paths and lessons learned along the way. Don't miss this opportunity to discover their inspiring stories and perspectives on the future of their industries.",
-            audio: await audioFileToBase64("audios/day1/conf6.wav"),
-            lipsync: await readJsonTranscript("audios/day1/conf6.json"),
+            text: "Brahim Baif, UX Designer at Obytes, presents a conference on 'AI and UX Design: Adapting to the potential and limitations of AI.' Explore with him how AI influences UX design in innovative ways.",
+            audio: await audioFileToBase64("audios/day2/conf8.wav"),
+            lipsync: await readJsonTranscript("audios/day2/conf8.json"),
             facialExpression: "smile",
             animation: "Idle",
           },
@@ -215,9 +224,16 @@ app.post("/chat", async (req, res) => {
       res.send({
         messages: [
           {
-            text: "Hassan El Bahi, expert in Deep Learning, Data, and Business Intelligence, as well as a popular YouTube content creator, invites you to participate in his workshop. With a Ph.D. in Artificial Intelligence and Image Processing and as a university professor at ENCG Marrakech, Hassan brings exceptional expertise in designing engaging computer science courses.",
-            audio: await audioFileToBase64("audios/day2/conf7.wav"),
-            lipsync: await readJsonTranscript("audios/day2/conf7.json"),
+            text: "In parallel ,Hassan El Bahi, expert in Deep Learning, Data, and Business Intelligence, as well as a popular YouTube content creator, invites you to participate in his workshop. With a Ph.D. in Artificial Intelligence and Image Processing and as a university professor at ENCG Marrakech, Hassan brings exceptional expertise in designing engaging computer science courses.",
+            audio: await audioFileToBase64("audios/day2/conf9.wav"),
+            lipsync: await readJsonTranscript("audios/day2/conf9.json"),
+            facialExpression: "smile",
+            animation: "Idle",
+          },
+          {
+            text: "Discover Hassan El Bahi's workshop. Titled 'From Data to Decisions: Become a Business Analyst with Power BI,' this practical session will guide you through using Power BI to transform data into strategic decisions.",
+            audio: await audioFileToBase64("audios/day2/conf10.wav"),
+            lipsync: await readJsonTranscript("audios/day2/conf10.json"),
             facialExpression: "smile",
             animation: "Idle",
           },
@@ -228,9 +244,16 @@ app.post("/chat", async (req, res) => {
       res.send({
         messages: [
           {
-            text: "Discover Hassan El Bahi's workshop, expert in Deep Learning, Data, and Business Intelligence. Titled 'From Data to Decisions: Become a Business Analyst with Power BI,' this practical session will guide you through using Power BI to transform data into strategic decisions.",
-            audio: await audioFileToBase64("audios/day2/conf8.wav"),
-            lipsync: await readJsonTranscript("audios/day2/conf8.json"),
+            text: "Najem Mohamad, expert in AI, Agile Methods, and leadership management, brings a wealth of experience as an IT Program Manager, Agile Consultant, coach, trainer, and facilitator. In his conference, Najem will explore the captivating theme of 'How to become an Augmented Leader?'. ",
+            audio: await audioFileToBase64("audios/day2/conf11.wav"),
+            lipsync: await readJsonTranscript("audios/day2/conf11.json"),
+            facialExpression: "smile",
+            animation: "Idle",
+          },
+          {
+            text: "This presentation promises to offer unique perspectives on how leaders can effectively integrate artificial intelligence and agile methods into their management practice to successfully navigate a constantly evolving world. Join us for a stimulating exploration of this crucial topic for leadership professionals.",
+            audio: await audioFileToBase64("audios/day2/conf12.wav"),
+            lipsync: await readJsonTranscript("audios/day2/conf12.json"),
             facialExpression: "smile",
             animation: "Idle",
           },
@@ -241,9 +264,16 @@ app.post("/chat", async (req, res) => {
       res.send({
         messages: [
           {
-            text: "Brahim Baif, UX Designer at Obytes, presents a conference on 'AI and UX Design: Adapting to the potential and limitations of AI.' Explore with him how AI influences UX design in innovative ways.",
-            audio: await audioFileToBase64("audios/day2/conf9.wav"),
-            lipsync: await readJsonTranscript("audios/day2/conf9.json"),
+            text: "Hassan Fadili, DevOps consultant, is an expert in visualization with proven experience in the software industry. He has expertise in Windows Communication Foundation (WCF), C sharp, Visual Studio, Scrum, and Team Foundation Server (TFS), as well as strong skills in community and social services, with a degree in Information Technology Engineering from the Hogeschool van Amsterdam. ",
+            audio: await audioFileToBase64("audios/day2/conf13.wav"),
+            lipsync: await readJsonTranscript("audios/day2/conf13.json"),
+            facialExpression: "smile",
+            animation: "Idle",
+          },
+          {
+            text: "In his conference, Hassan will explore the exciting theme of 'GitHub Enterprise Adoption & Copilot.' This presentation promises to offer in-depth insights into adopting GitHub Enterprise and using Copilot to optimize software development processes. Join us for an information-rich session full of insights and perspectives.",
+            audio: await audioFileToBase64("audios/day2/conf14.wav"),
+            lipsync: await readJsonTranscript("audios/day2/conf14.json"),
             facialExpression: "smile",
             animation: "Idle",
           },
@@ -254,16 +284,9 @@ app.post("/chat", async (req, res) => {
       res.send({
         messages: [
           {
-            text: "Najem Mohamad, expert in AI, Agile Methods, and leadership management, brings a wealth of experience as an IT Program Manager, Agile Consultant, coach, trainer, and facilitator. In his conference, Najem will explore the captivating theme of 'How to become an Augmented Leader?'. ",
-            audio: await audioFileToBase64("audios/day2/conf10.wav"),
-            lipsync: await readJsonTranscript("audios/day2/conf10.json"),
-            facialExpression: "smile",
-            animation: "Idle",
-          },
-          {
-            text: "This presentation promises to offer unique perspectives on how leaders can effectively integrate artificial intelligence and agile methods into their management practice to successfully navigate a constantly evolving world. Join us for a stimulating exploration of this crucial topic for leadership professionals.",
-            audio: await audioFileToBase64("audios/day2/conf11.wav"),
-            lipsync: await readJsonTranscript("audios/day2/conf11.json"),
+            text: "The winning team has truly showcased their prowess by fearlessly tackling the challenges presented and ingeniously crafting the optimal solution. Their ability to think outside the box, adapt to unforeseen obstacles, and deliver a solution that not only meets but exceeds expectations is commendable. Their dedication, expertise, and collaborative spirit have undoubtedly set a new standard for innovation. ",
+            audio: await audioFileToBase64("audios/special/spec1.wav"),
+            lipsync: await readJsonTranscript("audios/special/spec1.json"),
             facialExpression: "smile",
             animation: "Idle",
           },
@@ -274,16 +297,22 @@ app.post("/chat", async (req, res) => {
       res.send({
         messages: [
           {
-            text: "Hassan Fadili, DevOps consultant, is an expert in visualization with proven experience in the software industry. He has expertise in Windows Communication Foundation (WCF), C sharp, Visual Studio, Scrum, and Team Foundation Server (TFS), as well as strong skills in community and social services, with a degree in Information Technology Engineering from the Hogeschool van Amsterdam. ",
-            audio: await audioFileToBase64("audios/day2/conf12.wav"),
-            lipsync: await readJsonTranscript("audios/day2/conf12.json"),
+            text: "Congratulations to them for their outstanding achievement.",
+            audio: await audioFileToBase64("audios/special/spec2.wav"),
+            lipsync: await readJsonTranscript("audios/special/spec2.json"),
             facialExpression: "smile",
             animation: "Idle",
           },
+        ],
+      });
+      return;
+    case "13":
+      res.send({
+        messages: [
           {
-            text: "In his conference, Hassan will explore the exciting theme of 'GitHub Enterprise Adoption & Copilot.' This presentation promises to offer in-depth insights into adopting GitHub Enterprise and using Copilot to optimize software development processes. Join us for an information-rich session full of insights and perspectives.",
-            audio: await audioFileToBase64("audios/day2/conf13.wav"),
-            lipsync: await readJsonTranscript("audios/day2/conf13.json"),
+            text: "Let's mark our calendars with anticipation and warmth for the next edition of this incredible event, where innovation meets passion! Until then, let's carry spirit of collaboration and creativity in our hearts, eagerly awaiting the opportunity to reunite and witness more groundbreaking achievements. See you all at the next edition, filled with even more love, learning, and laughter! ",
+            audio: await audioFileToBase64("audios/special/spec3.wav"),
+            lipsync: await readJsonTranscript("audios/special/spec3.json"),
             facialExpression: "smile",
             animation: "Idle",
           },
@@ -292,22 +321,6 @@ app.post("/chat", async (req, res) => {
       return;
     default:
       break;
-  }
-
-  if (!userMessage) {
-  } else if (userMessage === "1") {
-    res.send({
-      messages: [
-        {
-          text: " Eminent Expert in Digital Transformation, Executive Advisory, and Associate Researcher at IMREDD, Mohamed Amine El Mahfoudi will enlighten our conference with his captivating talk on the role of artificial intelligence in optimizing operational efficiency for employees in businesses.",
-          audio: await audioFileToBase64("audios/day1/conf0.wav"),
-          lipsync: await readJsonTranscript("audios/day1/conf0.json"),
-          facialExpression: "smile",
-          animation: "Idle",
-        },
-      ],
-    });
-    return;
   }
 
   // ! THIS IS WHAT NEEDS TO BE CHANGED I THINK
@@ -346,15 +359,15 @@ app.post("/chat", async (req, res) => {
     const fileName = `audios/message_${i}.mp3`; // The name of your audio file
     const textInput = message.text; // The text you wish to convert to speech
 
-    // await voice.textToSpeech(
-    //   "0db7198723df5782880fe3b741a4a832",
-    //   voiceID,
-    //   fileName,
-    //   textInput,
-    //   0.5,
-    //   0.31,
-    //   "eleven_turbo_v2"
-    // );
+    await voice.textToSpeech(
+      "0db7198723df5782880fe3b741a4a832",
+      voiceID,
+      fileName,
+      textInput,
+      0.5,
+      0.31,
+      "eleven_turbo_v2"
+    );
 
     // generate lipsync
     // await lipSyncMessage(i);
